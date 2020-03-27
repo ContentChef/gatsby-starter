@@ -13,6 +13,9 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-contentchef`,
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

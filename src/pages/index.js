@@ -1,21 +1,59 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import { useStaticQuery, graphql, Link } from "gatsby"
+import { Card } from "../components/card"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const IndexPage = () => {
+
+  const data = useStaticQuery(graphql`
+  query TopSitesQuery {
+    allContentChefTopSite {
+      edges {
+        node {
+          publicId
+          payload {
+            description
+            image
+            title
+            url
+          }
+          requestContext {
+            cloudName
+          }
+        }
+      }
+    }
+  }
+  `);
+
+  console.log(data);
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <div>
+        {data.allContentChefTopSite.edges.map(
+          ({node: 
+            {publicId, 
+              payload: {title, image, description, url},
+              requestContext: {cloudName}}}
+          ) => (
+            <Link to={`/sites/${publicId}`}>
+              <Card 
+                title={title}
+                description={description}
+                image={image}
+                url={url}
+                cloudName={cloudName}
+              />
+            </Link>
+          )
+        )}
+      </div>
+    </Layout>
+  )
+}
 
 export default IndexPage
