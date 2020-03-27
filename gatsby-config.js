@@ -15,6 +15,17 @@ module.exports = {
     },
     {
       resolve: `gatsby-source-contentchef`,
+      options: {
+        apiKey: '<your api key>',
+        host: '<contentchef host>',
+        spaceId: '<your spaceId>',
+        channel: '<your channel>',
+        queries: [{
+          id: 'top-site',
+          contentDefinition: 'top-site'
+        }
+      ]
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
