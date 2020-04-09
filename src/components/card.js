@@ -1,5 +1,5 @@
 import React from 'react';
-import { createUrl } from '../cloudinary';
+import { getImageUrl } from '../helpers';
 
 const containerStyle = {
     display: 'flex',
@@ -27,7 +27,7 @@ const imgStyle = {
 
 export function Card(props) {
 
-    const imageUrl = createUrl(props.image, props.cloudName);
+    const imageUrl = getImageUrl(props.image);
     return (
         <div style={containerStyle}>
             <div>

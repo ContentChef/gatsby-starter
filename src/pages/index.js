@@ -19,9 +19,6 @@ const IndexPage = () => {
             title
             url
           }
-          requestContext {
-            cloudName
-          }
         }
       }
     }
@@ -36,7 +33,7 @@ const IndexPage = () => {
           ({node: 
             {publicId, 
               payload: {title, image, description, url},
-              requestContext: {cloudName}}}
+            }}
           ) => (
             <Link to={`/sites/${publicId}`}>
               <Card 
@@ -44,7 +41,6 @@ const IndexPage = () => {
                 description={description}
                 image={image}
                 url={url}
-                cloudName={cloudName}
               />
             </Link>
           )

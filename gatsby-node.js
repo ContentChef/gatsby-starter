@@ -26,9 +26,6 @@ exports.createPages = ({ graphql, actions }) => {
             title
             url
           }
-          requestContext {
-            cloudName
-          }
         }
       }
     }
@@ -49,7 +46,6 @@ exports.createPages = ({ graphql, actions }) => {
             image: edge.node.payload.image,
             url: edge.node.payload.url,
             description: edge.node.payload.description,
-            cloudName: edge.node.requestContext.cloudName,
           // Add optional context data to be inserted
           // as props into the page component..
           //

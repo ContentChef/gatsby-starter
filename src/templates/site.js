@@ -1,7 +1,7 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import { createUrl } from "../cloudinary";
+import { getImageUrl } from "../helpers";
 
 const containerStyle = {
     display: 'flex',
@@ -16,7 +16,7 @@ const Site = ({pageContext: site}) => (
         <h1>
             {site.title}
         </h1>
-        <img src={createUrl(site.image, site.cloudName)} alt=""/>
+        <img src={getImageUrl(site.image)} alt=""/>
         <a href={site.url}>
             {site.url}
         </a>
